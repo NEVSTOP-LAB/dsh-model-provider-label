@@ -1,7 +1,7 @@
 {
   "name": "dsh-nevstop-lab-flavor",
   "version": "0.2.0",
-  "description": "NEVSTOP-LAB 的 DSH 定制口味：输入区显示「供应商 · 模型」，编写器键位可配（Enter 换行 / Ctrl+Enter 发送 / Shift+Enter），设置页逐项开关，配置持久化到插件自己的 JSON。",
+  "description": "让 DSH 更贴合 NEVSTOP-LAB 使用习惯的本地化定制插件，各项定制按需开启。",
   "keywords": [
     "dsh",
     "dsh-plugin",
