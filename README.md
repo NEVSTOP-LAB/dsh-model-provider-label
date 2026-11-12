@@ -22,7 +22,7 @@
 
 ## 编写器键位
 
-Enter、Ctrl（macOS 上为 Cmd）+ Enter、Shift + Enter 三行分别可选：
+Enter、Ctrl（macOS 上为 Cmd）+ Enter、Shift + Enter、Alt + Enter 四行分别可选：
 
 | 选项 | 效果 |
 |---|---|
@@ -30,13 +30,13 @@ Enter、Ctrl（macOS 上为 Cmd）+ Enter、Shift + Enter 三行分别可选：
 | 排队发送 | 发送这条消息；Agent 正在运行时排进队列 |
 | 插话发送 | 发送这条消息；Agent 正在运行时插进当前回合 |
 
-默认：Enter 换行、Ctrl + Enter 排队发送、Shift + Enter 换行。
+默认：Enter 换行、Ctrl + Enter 排队发送、Shift + Enter 换行、Alt + Enter 插话发送。
 
-输入框为空时，占位提示会在官方文案后追加当前键位，改完设置立即更新。以下情况保持 DSH 原生行为：
+输入框为空时，占位提示会在官方文案后追加当前键位（如 `Enter 换行 · Ctrl+Enter 排队 · Shift+Enter 换行 · Alt+Enter 插话`），改完设置立即更新。以下情况保持 DSH 原生行为：
 
 - `/` 与 `@` 菜单打开时，Enter 仍然是选择菜单项；
 - 输入法组词过程中的回车；
-- Alt + Enter、Ctrl + Shift + Enter 等组合；
+- Ctrl + Shift + Enter 等组合；
 - 输入框为空且 Agent 正在运行时，Ctrl + Enter 仍是「插话发送全部排队消息」。
 
 ## 设置页
