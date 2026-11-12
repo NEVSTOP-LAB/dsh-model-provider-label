@@ -7,7 +7,7 @@ NEVSTOP-LAB 的 DSH 定制口味：把所有「本地化微调」收在一个插
 | 功能 | 默认 | 说明 |
 |---|---|---|
 | 模型供应商前缀 | 开 | 输入区模型按钮与模型菜单当前值显示「供应商 · 模型」（如 `DeepSeek · flash`、`opencode-go · flash`），菜单选项保持模型名；只注册官方 `conversation.input.model.label` 槽位，不遮蔽模型座位 |
-| 编写器键位 | 开 | Enter 换行、Ctrl/Cmd+Enter 发送；三行均可单独选「换行 / 发送」；`/` 与 `@` 菜单、输入法组词、Alt 组合、Ctrl+Shift 一律放行 |
+| 编写器键位 | 开 | Enter / Ctrl+Cmd+Enter / Shift+Enter 三行各选「换行 / 排队发送 / 插话发送」；排队与插话按内置投递语义执行，`/` 与 `@` 菜单、输入法组词、Alt 组合、Ctrl+Shift 一律放行 |
 
 后续需求继续加在「功能列表」里；每项都在设置页有独立开关，关掉即恢复 DSH 原生行为。
 
@@ -28,7 +28,7 @@ dsh plugin --profile desktop add github:NEVSTOP-LAB/dsh-nevstop-lab-flavor
 ```json
 {
   "features": { "providerLabel": true, "composerKeys": true },
-  "composerKeys": { "enter": "newline", "ctrlEnter": "send", "shiftEnter": "newline" }
+  "composerKeys": { "enter": "newline", "ctrlEnter": "queue", "shiftEnter": "newline" }
 }
 ```
 
