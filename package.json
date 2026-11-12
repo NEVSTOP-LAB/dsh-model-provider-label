@@ -1,0 +1,50 @@
+{
+  "name": "dsh-model-provider-label",
+  "version": "0.1.0",
+  "description": "在 DSH 输入区模型按钮与模型菜单里显示「供应商 · 模型」，用于区分同名模型的不同提供方。Shows the provider name beside the model name in the composer model control.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "model-selector",
+    "provider"
+  ],
+  "homepage": "https://github.com/NEVSTOP-LAB/dsh-model-provider-label#readme",
+  "bugs": {
+    "url": "https://github.com/NEVSTOP-LAB/dsh-model-provider-label/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NEVSTOP-LAB/dsh-model-provider-label.git"
+  },
+  "license": "MIT",
+  "author": "NEVSTOP-LAB",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.0 <0.3.0-0"
+  },
+  "scripts": {
+    "check": "node --check index.js && node --check client.js"
+  }
+}
