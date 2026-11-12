@@ -7,7 +7,8 @@
 | 功能 | 默认 | 一句话 |
 |---|---|---|
 | 模型供应商前缀 | 开 | 在模型名旁显示它来自哪个供应商 |
-| 编写器键位 | 开 | 自定义 Enter / Ctrl+Enter / Shift+Enter 的作用 |
+| 编写器键位 | 开 | 自定义 Enter / Ctrl+Enter / Shift+Enter / Alt+Enter 的作用 |
+| 设置导航图标 | 开 | 设置页左侧导航只显示图标、横向排列，悬停显示名称 |
 
 设置入口：**设置 → NEVSTOP-LAB**。
 
@@ -38,6 +39,10 @@ Enter、Ctrl（macOS 上为 Cmd）+ Enter、Shift + Enter、Alt + Enter 四行�
 - 输入法组词过程中的回车；
 - Ctrl + Shift + Enter 等组合；
 - 输入框为空且 Agent 正在运行时，Ctrl + Enter 仍是「插话发送全部排队消息」。
+
+## 设置导航图标
+
+设置页左侧导航只显示图标、横向排列，鼠标悬停时显示对应名称。关闭后恢复为「图标 + 文字」的竖排列表。
 
 ## 设置页
 
