@@ -41,7 +41,9 @@
     "client": {
       "platform": "web",
       "inject": [
-        "slots"
+        "slots",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-model-selection"
       ]
     }
   },
@@ -49,6 +51,22 @@
     "dsh": ">=0.2.1-rc.0 <0.3.0-0"
   },
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js"
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/balance/index.js && node --check lib/balance/config.js"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4",
+    "@deepseek-ai/dsh-typert-protocol": "~0.2.0-rc.2",
+    "@deepseek-ai/dsh-launch-environment": "~0.2.0-rc.2"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-typert-protocol": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-launch-environment": {
+      "optional": true
+    }
   }
 }
