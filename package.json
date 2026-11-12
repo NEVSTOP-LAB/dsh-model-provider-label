@@ -1,34 +1,35 @@
 {
-  "name": "dsh-model-provider-label",
-  "version": "0.1.0",
-  "description": "在 DSH 输入区模型按钮与模型菜单里显示「供应商 · 模型」，用于区分同名模型的不同提供方。Shows the provider name beside the model name in the composer model control.",
+  "name": "dsh-nevstop-lab-flavor",
+  "version": "0.2.0",
+  "description": "NEVSTOP-LAB 的 DSH 定制口味：输入区显示「供应商 · 模型」，编写器键位可配（Enter 换行 / Ctrl+Enter 发送 / Shift+Enter），设置页逐项开关，配置持久化到插件自己的 JSON。",
   "keywords": [
     "dsh",
     "dsh-plugin",
     "deepseek-harness",
+    "nevstop-lab",
+    "flavor",
     "model-selector",
-    "provider"
+    "composer-keys"
   ],
-  "homepage": "https://github.com/NEVSTOP-LAB/dsh-model-provider-label#readme",
+  "homepage": "https://github.com/NEVSTOP-LAB/dsh-nevstop-lab-flavor#readme",
   "bugs": {
-    "url": "https://github.com/NEVSTOP-LAB/dsh-model-provider-label/issues"
+    "url": "https://github.com/NEVSTOP-LAB/dsh-nevstop-lab-flavor/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NEVSTOP-LAB/dsh-model-provider-label.git"
+    "url": "git+https://github.com/NEVSTOP-LAB/dsh-nevstop-lab-flavor.git"
   },
   "license": "MIT",
   "author": "NEVSTOP-LAB",
   "type": "module",
-  "main": "index.js",
+  "main": "lib/index.js",
   "exports": {
-    ".": "./index.js",
-    "./client": "./client.js",
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
   "files": [
-    "index.js",
-    "client.js",
+    "lib",
     "cordis.patch.yml",
     "README.md",
     "LICENSE"
@@ -38,13 +39,16 @@
       "patch": "./cordis.patch.yml"
     },
     "client": {
-      "platform": "web"
+      "platform": "web",
+      "inject": [
+        "slots"
+      ]
     }
   },
   "engines": {
     "dsh": ">=0.2.1-rc.0 <0.3.0-0"
   },
   "scripts": {
-    "check": "node --check index.js && node --check client.js"
+    "check": "node --check lib/index.js && node --check lib/client.js"
   }
 }

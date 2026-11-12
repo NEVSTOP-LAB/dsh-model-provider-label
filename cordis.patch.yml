@@ -1,5 +1,5 @@
-# dsh-model-provider-label bundle patch：挂载宿主半侧（空实现），
+# dsh-nevstop-lab-flavor bundle patch：挂载宿主半侧（配置路由 + JSON 持久化），
 # 浏览器半侧由 package.json 的 dsh.client 声明加载。
 - insert:
-    - id: dsh-model-provider-label
-      name: 'dsh-model-provider-label'
+    - id: dsh-nevstop-lab-flavor
+      name: 'dsh-nevstop-lab-flavor'
