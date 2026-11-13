@@ -1,0 +1,54 @@
+name: README hero reminder
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  hero-reminder:
+    name: README hero reminder
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Warn when UI changes ship without a new hero image
+        shell: bash
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          set -euo pipefail
+
+          base="origin/${BASE_REF}"
+          if ! git rev-parse --verify --quiet "${base}" >/dev/null; then
+            git fetch --no-tags origin "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}" || true
+          fi
+
+          if ! changed="$(git diff --name-only "${base}...HEAD" 2>/dev/null)"; then
+            echo "无法计算与 ${base} 的差异，跳过头图检查。"
+            exit 0
+          fi
+
+          if [[ -z "${changed}" ]]; then
+            echo "本 PR 没有文件差异，跳过头图检查。"
+            exit 0
+          fi
+
+          watched="$(printf '%s\n' "${changed}" | grep -E '^(lib/|README\.md$|assets/hero/source\.html$)' || true)"
+          if [[ -z "${watched}" ]]; then
+            echo "未改动界面或说明相关文件，头图无需更新。"
+            exit 0
+          fi
+
+          if printf '%s\n' "${changed}" | grep -qx 'assets/hero\.png'; then
+            echo "已包含 assets/hero.png 更新。"
+            exit 0
+          fi
+
+          echo "::warning title=README 头图可能过时::本次改动涉及界面或说明，但没有更新 assets/hero.png。"
+          printf '%s\n' "${watched}" | sed 's/^/  - /'
+          echo "修改 assets/hero/source.html 后运行 npm run hero，并目视检查生成的头图；判定规则见 docs/hero.md。"

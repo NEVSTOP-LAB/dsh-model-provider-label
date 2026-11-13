@@ -1,6 +1,6 @@
 {
   "name": "dsh-nevstop-lab-flavor",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "让 DSH 更贴合 NEVSTOP-LAB 使用习惯的本地化定制插件，各项定制按需开启。",
   "keywords": [
     "dsh",
@@ -51,7 +51,8 @@
     "dsh": ">=0.2.1-rc.0 <0.3.0-0"
   },
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/balance/index.js && node --check lib/balance/config.js"
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/balance/index.js && node --check lib/balance/config.js && node --check scripts/hero/render.mjs && node scripts/icons/verify.mjs",
+    "hero": "node scripts/hero/render.mjs"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "~4.0.4",

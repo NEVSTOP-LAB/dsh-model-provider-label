@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#5686FE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <title>侧边栏面板图标</title>
+  <rect x="2.9" y="3.6" width="18.2" height="16.8" rx="2.6"/>
+  <path d="M8.9 4.5V19.5"/>
+  <rect x="4.7" y="6.7" width="2.4" height="2.4" rx="0.8" fill="#5686FE" stroke="none"/>
+  <rect x="4.7" y="10.8" width="2.4" height="2.4" rx="0.8" fill="#5686FE" stroke="none"/>
+  <rect x="4.7" y="14.9" width="2.4" height="2.4" rx="0.8" fill="#5686FE" stroke="none"/>
+</svg>
