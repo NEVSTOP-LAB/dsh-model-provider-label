@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#5686FE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <title>编写器键位</title>
+  <rect x="2.9" y="6.5" width="18.2" height="11" rx="2.8"/>
+  <circle cx="6.6" cy="9" r="0.95" fill="#5686FE" stroke="none"/>
+  <circle cx="9.8" cy="9" r="0.95" fill="#5686FE" stroke="none"/>
+  <circle cx="13" cy="9" r="0.95" fill="#5686FE" stroke="none"/>
+  <circle cx="16.2" cy="9" r="0.95" fill="#5686FE" stroke="none"/>
+  <rect x="15" y="12.1" width="3.4" height="3.4" rx="1.1" fill="#5686FE" stroke="none"/>
+  <path d="M6.6 13.9h6.4"/>
+</svg>

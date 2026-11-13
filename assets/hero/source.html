@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="dark">
+<title>dsh-nevstop-lab-flavor · README hero</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { width: 1600px; height: 1215px; margin: 0; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif;
+    background: #090a0d;
+    color: #f9fafb;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(1200px 620px at 14% -12%, rgba(86, 134, 254, .20), transparent 62%),
+      radial-gradient(900px 520px at 92% 108%, rgba(126, 86, 254, .12), transparent 60%),
+      linear-gradient(180deg, #0c0e13 0%, #090a0d 60%, #07080a 100%);
+  }
+  .bg-grid {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(1100px 700px at 50% 24%, #000 30%, transparent 82%);
+    opacity: .5;
+  }
+
+  header { position: absolute; left: 40px; right: 40px; top: 24px; height: 106px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { width: 40px; height: 40px; display: block; }
+  .brand-name { font-size: 14px; font-weight: 600; letter-spacing: .14em; color: #e3e7ee; }
+  .brand-repo { margin-top: 2px; font-size: 11px; color: #858b94; letter-spacing: .03em; }
+  h1 { position: absolute; left: 0; top: 50px; margin: 0; font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: .01em; color: #f4f6f9; }
+  .sub { position: absolute; left: 0; top: 90px; margin: 0; font-size: 13.5px; line-height: 20px; color: #9ba1aa; }
+  .sub .accent { color: #9db9ff; }
+  .pills { position: absolute; right: 0; top: 4px; display: flex; gap: 8px; }
+  .pill { height: 26px; display: flex; align-items: center; padding: 0 11px; border-radius: 999px; font-size: 11px; letter-spacing: .02em; color: #aab0b9; background: rgba(255, 255, 255, .045); border: 1px solid rgba(255, 255, 255, .09); }
+  .pill.hot { color: #c8d8ff; background: rgba(86, 134, 254, .13); border-color: rgba(86, 134, 254, .3); }
+
+  .shot {
+    position: absolute; left: 0; top: 130px; width: 1600px; height: 1000px;
+    display: block; border-top: 1px solid rgba(255, 255, 255, .10); border-bottom: 1px solid rgba(255, 255, 255, .10);
+    box-shadow: inset 0 0 120px rgba(0, 0, 0, .25);
+  }
+
+  /* spotlight boxes */
+  .box {
+    position: absolute; border: 1.5px dashed rgba(86, 134, 254, .9); border-radius: 12px;
+    box-shadow: 0 0 0 4px rgba(86, 134, 254, .10), 0 0 26px rgba(86, 134, 254, .28);
+    pointer-events: none;
+  }
+
+  /* pins */
+  .pin {
+    position: absolute; width: 40px; height: 40px; border-radius: 50%; z-index: 20;
+    background: #0d0f14; border: 2px solid #5686fe; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 6px rgba(86, 134, 254, .10), 0 14px 30px rgba(0, 0, 0, .55);
+  }
+  .pin img { width: 20px; height: 20px; display: block; }
+  .pin .n { position: absolute; top: -6px; right: -6px; width: 17px; height: 17px; border-radius: 50%; background: #5686fe; border: 2px solid #0d0f14; color: #0a0c11; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+  /* right detail card */
+  .detail {
+    position: absolute; left: 1140px; top: 640px; width: 450px; z-index: 15;
+    border-radius: 12px; background: rgba(14, 15, 19, .94); border: 1px solid rgba(86, 134, 254, .35);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .55), 0 0 0 4px rgba(86, 134, 254, .07);
+    overflow: hidden;
+  }
+  .detail-head { height: 26px; display: flex; align-items: center; gap: 7px; padding: 0 10px; font-size: 10.5px; letter-spacing: .04em; color: #a9c1ff; background: rgba(86, 134, 254, .12); border-bottom: 1px solid rgba(86, 134, 254, .22); }
+  .detail-head .dot { width: 5px; height: 5px; border-radius: 50%; background: #5686fe; }
+  .detail img { display: block; width: 450px; height: 77px; }
+  .detail-foot { display: flex; align-items: center; gap: 4px; padding: 0 8px; height: 34px; border-top: 1px solid rgba(255, 255, 255, .07); }
+  .d-item { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: #b9c0c9; white-space: nowrap; padding: 0 5px; }
+  .d-item img { width: 13px; height: 13px; }
+  .d-item b { width: 14px; height: 14px; border-radius: 50%; background: #5686fe; color: #0a0c11; font-size: 9px; display: flex; align-items: center; justify-content: center; }
+
+  /* settings entry callout */
+  .entry {
+    position: absolute; left: 250px; top: 452px; z-index: 16;
+    display: flex; align-items: center; gap: 8px; padding: 7px 11px; border-radius: 9px;
+    background: rgba(13, 15, 20, .9); border: 1px solid rgba(86, 134, 254, .35);
+    font-size: 11px; color: #cfdcff; box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+  }
+  .entry .k { color: #8fb0ff; font-weight: 500; }
+  .links { position: absolute; inset: 0; z-index: 14; pointer-events: none; }
+
+  /* legend */
+  .legend {
+    position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); width: max-content; height: 46px;
+    display: flex; align-items: center; padding: 0 10px; border-radius: 12px;
+    background: rgba(255, 255, 255, .035); border: 1px solid rgba(255, 255, 255, .08);
+  }
+  .lg-label { font-size: 11px; color: #7f858e; letter-spacing: .05em; padding: 0 10px 0 4px; }
+  .lg-item { position: relative; display: flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; }
+  .lg-item + .lg-item::before { content: ""; position: absolute; left: -2px; top: 6px; width: 1px; height: 18px; background: rgba(255, 255, 255, .08); }
+  .lg-num { width: 16px; height: 16px; border-radius: 50%; background: #5686fe; color: #0a0c11; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .lg-item img { width: 16px; height: 16px; }
+  .lg-text { font-size: 12.5px; color: #c9cdd3; white-space: nowrap; }
+
+  .mock-note { position: absolute; right: 26px; bottom: 4px; font-size: 10px; color: #5f646d; letter-spacing: .02em; }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg-grid"></div>
+
+<header>
+  <div class="brand">
+    <img src="../icons/flavor.svg" alt="">
+    <div>
+      <div class="brand-name">NEVSTOP-LAB</div>
+      <div class="brand-repo">dsh-nevstop-lab-flavor · DSH 定制插件</div>
+    </div>
+  </div>
+  <h1>给 DSH 加上 NEVSTOP-LAB 的手感</h1>
+  <p class="sub">真实界面截图（演示数据）：打开 <span class="accent">设置 → NEVSTOP-LAB</span>，六项改动分别用图标和编号标出。</p>
+  <div class="pills">
+    <span class="pill hot">真实截图</span>
+    <span class="pill">6 项独立开关</span>
+    <span class="pill">无个人数据</span>
+  </div>
+</header>
+
+<img class="shot" src="main.png" alt="DSH 真实截图：设置页打开到 NEVSTOP-LAB">
+
+<!-- 3 sidebar panels -->
+<div class="box" style="left:6.7px; top:195px; width:220px; height:30px;"></div>
+<div class="pin" style="left:236px; top:186px;"><img src="../icons/sidebar.svg" alt=""><span class="n">3</span></div>
+<!-- 4 active sessions -->
+<div class="box" style="left:6.7px; top:233px; width:226.7px; height:133.3px;"></div>
+<div class="pin" style="left:240px; top:300px;"><img src="../icons/sessions.svg" alt=""><span class="n">4</span></div>
+<!-- 5 default model card -->
+<div class="box" style="left:643.3px; top:748.3px; width:470px; height:181.7px;"></div>
+<div class="pin" style="left:1076px; top:706px;"><img src="../icons/model.svg" alt=""><span class="n">5</span></div>
+
+<!-- composer detail -->
+<div class="detail">
+  <div class="detail-head"><span class="dot"></span>输入区 · 实际效果</div>
+  <img src="composer.png" alt="输入区细节：DeepSeek · flash、Ctrl+Enter 发送键与余额圆环">
+  <div class="detail-foot">
+    <span class="d-item"><b>6</b><img src="../icons/balance.svg" alt="">余额圆环</span>
+    <span class="d-item"><b>1</b><img src="../icons/provider.svg" alt="">供应商前缀</span>
+    <span class="d-item"><b>2</b><img src="../icons/keys.svg" alt="">发送键位</span>
+  </div>
+</div>
+
+<!-- inside detail: boxes -->
+<div class="box" style="left:1202.9px; top:682px; width:256px; height:28.6px; border-radius:7px;"></div>
+<div class="box" style="left:1161.9px; top:682px; width:28.6px; height:28.6px; border-radius:7px;"></div>
+<div class="box" style="left:1483.4px; top:682px; width:84.1px; height:28.6px; border-radius:7px;"></div>
+
+<div class="entry">设置入口 <span class="k">设置 → NEVSTOP-LAB</span></div>
+<svg class="links" width="1600" height="1215"><path d="M400 472 L470 492" fill="none" stroke="rgba(86,134,254,.55)" stroke-width="1.4" stroke-dasharray="4 5" stroke-linecap="round"/><circle cx="472" cy="493" r="3" fill="none" stroke="rgba(86,134,254,.9)" stroke-width="1.4"/></svg>
+
+<div class="legend">
+  <span class="lg-label">改动清单</span>
+  <span class="lg-item"><span class="lg-num">1</span><img src="../icons/provider.svg" alt=""><span class="lg-text">模型供应商前缀</span></span>
+  <span class="lg-item"><span class="lg-num">2</span><img src="../icons/keys.svg" alt=""><span class="lg-text">编写器键位</span></span>
+  <span class="lg-item"><span class="lg-num">3</span><img src="../icons/sidebar.svg" alt=""><span class="lg-text">侧边栏面板图标</span></span>
+  <span class="lg-item"><span class="lg-num">4</span><img src="../icons/sessions.svg" alt=""><span class="lg-text">活跃会话区</span></span>
+  <span class="lg-item"><span class="lg-num">5</span><img src="../icons/model.svg" alt=""><span class="lg-text">新会话默认模型</span></span>
+  <span class="lg-item"><span class="lg-num">6</span><img src="../icons/balance.svg" alt=""><span class="lg-text">余额圆环</span></span>
+</div>
+
+<div class="mock-note">截图来自干净环境，会话与数据均为演示</div>
+</body>
+</html>
