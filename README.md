@@ -10,7 +10,7 @@
 |---|---|---|---|
 | <img src="assets/icons/provider.svg" width="20" height="20" alt=""> | [模型供应商前缀](docs/features/provider-label.md) | 开 | 在模型名旁标出供应商，同名模型一眼可辨，不会选错来源。 |
 | <img src="assets/icons/keys.svg" width="20" height="20" alt=""> | [编写器键位](docs/features/composer-keys.md) | 开 | 自定义每个键是换行、排队还是插话，让发送手感贴合个人习惯。 |
-| <img src="assets/icons/sidebar.svg" width="20" height="20" alt=""> | [侧边栏面板图标](docs/features/sidebar-panels.md) | 开 | 侧栏顶部只留一排图标，把纵向空间让给会话列表。 |
+| <img src="assets/icons/sidebar.svg" width="20" height="20" alt=""> | [侧边栏面板图标](docs/features/sidebar-panels.md) | 开 | 侧栏顶部只留一排图标，把纵向空间让给会话列表；末尾按钮可切回官方列表。 |
 | <img src="assets/icons/sessions.svg" width="20" height="20" alt=""> | [活跃会话区](docs/features/active-sessions.md) | 开 | 在「工作区」上方列出最近活跃的会话，随时切回正在处理的工作。 |
 | <img src="assets/icons/model.svg" width="20" height="20" alt=""> | [新会话默认模型](docs/features/default-model.md) | 开 | 新会话固定使用指定模型，避免沿用上个会话的选择多花冤枉钱。 |
 | <img src="assets/icons/balance.svg" width="20" height="20" alt=""> | [余额圆环](docs/features/balance-ring.md) | 开 | 在输入框右侧显示余额或用量，随时知道还能用多少。 |
