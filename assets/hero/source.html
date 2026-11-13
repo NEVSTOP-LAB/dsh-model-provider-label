@@ -147,9 +147,9 @@
     font-size: 11.5px; color: #cfdcff;
   }
   .model-chip .ui { width: 11px; height: 11px; color: #9db9ff; }
-  .c-tools { display: flex; align-items: center; gap: 7px; margin-left: 6px; color: #8b9099; }
+  .c-tools { display: flex; align-items: center; gap: 7px; margin-left: 6px; margin-right: auto; color: #8b9099; }
   .c-tools .ui { width: 15px; height: 15px; }
-  .ring { position: relative; width: 26px; height: 26px; margin-left: auto; }
+  .ring { position: relative; width: 26px; height: 26px; }
   .ring svg { width: 26px; height: 26px; transform: rotate(-90deg); }
   .ring span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 9.5px; color: #cfd3d6; }
   .send {
@@ -199,6 +199,12 @@
   .card-desc { font-size: 11.5px; line-height: 16px; color: #9399a2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .toggle { width: 36px; height: 21px; flex: none; border-radius: 999px; background: #5686fe; position: relative; }
   .toggle::after { content: ""; position: absolute; top: 2.5px; right: 2.5px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, .35); }
+  .card-actions { display: flex; align-items: center; gap: 7px; flex: none; }
+  .gear {
+    width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255, 255, 255, .13); color: #8b9099;
+  }
+  .gear .ui { width: 14px; height: 14px; }
   .card.hl { border-color: rgba(86, 134, 254, .55); box-shadow: 0 0 0 3px rgba(86, 134, 254, .1), 0 12px 30px rgba(86, 134, 254, .07); }
   .section-foot { display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; color: #8b9099; }
   .reset-btn { font-size: 11.5px; color: #b9bec6; border: 1px solid rgba(255, 255, 255, .14); border-radius: 7px; padding: 4px 10px; }
@@ -376,7 +382,6 @@
         <div class="c-input">让 DSH 更贴近 NEVSTOP-LAB 的日常…</div>
         <div class="c-hint">Enter 换行 · Ctrl+Enter 排队发送 · Shift+Enter 换行 · Alt+Enter 插话</div>
         <div class="c-row">
-          <span class="model-chip">DeepSeek · flash<svg class="ui"><use href="#i-chevron-down"/></svg></span>
           <span class="c-tools">
             <svg class="ui"><use href="#i-clip"/></svg>
           </span>
@@ -387,6 +392,7 @@
             </svg>
             <span>¥</span>
           </span>
+          <span class="model-chip">DeepSeek · flash<svg class="ui"><use href="#i-chevron-down"/></svg></span>
           <span class="send">Ctrl+Enter<svg class="ui"><use href="#i-send"/></svg></span>
         </div>
       </div>
@@ -412,7 +418,7 @@
     <div class="settings-content">
       <div class="section-head">
         <div class="section-title"><img src="../icons/flavor.svg" alt="">NEVSTOP-LAB</div>
-        <div class="section-intro">NEVSTOP-LAB 对 DSH 的本地化微调。每项可单独开关，关闭即恢复 DSH 原生行为。</div>
+        <div class="section-intro">NEVSTOP-LAB 对 DSH 的本地化微调。每项可单独开关，齿轮展开该项配置，关闭即恢复 DSH 原生行为。</div>
       </div>
 
       <div class="cards">
@@ -422,7 +428,7 @@
             <span class="card-title">模型供应商前缀</span>
             <span class="card-desc">输入区显示「DeepSeek · flash」，一眼看清模型来自哪家</span>
           </span>
-          <span class="toggle"></span>
+          <span class="card-actions"><span class="gear"><svg class="ui"><use href="#i-gear"/></svg></span><span class="toggle"></span></span>
         </div>
         <div class="card">
           <span class="card-ico"><img src="../icons/keys.svg" alt=""></span>
@@ -430,7 +436,7 @@
             <span class="card-title">编写器键位</span>
             <span class="card-desc">Enter 换行 · Ctrl+Enter 排队 · Shift+Enter 换行 · Alt+Enter 插话</span>
           </span>
-          <span class="toggle"></span>
+          <span class="card-actions"><span class="gear"><svg class="ui"><use href="#i-gear"/></svg></span><span class="toggle"></span></span>
         </div>
         <div class="card">
           <span class="card-ico"><img src="../icons/sidebar.svg" alt=""></span>
@@ -446,7 +452,7 @@
             <span class="card-title">活跃会话区</span>
             <span class="card-desc">12 小时内活跃 · 兜底 5 个 · 工作区折叠成一行</span>
           </span>
-          <span class="toggle"></span>
+          <span class="card-actions"><span class="gear"><svg class="ui"><use href="#i-gear"/></svg></span><span class="toggle"></span></span>
         </div>
         <div class="card hl">
           <span class="card-ico"><img src="../icons/model.svg" alt=""></span>
@@ -454,7 +460,7 @@
             <span class="card-title">新会话默认模型</span>
             <span class="card-desc">新会话固定使用 DeepSeek · flash，不沿用上一个会话</span>
           </span>
-          <span class="toggle"></span>
+          <span class="card-actions"><span class="gear"><svg class="ui"><use href="#i-gear"/></svg></span><span class="toggle"></span></span>
         </div>
         <div class="card">
           <span class="card-ico"><img src="../icons/balance.svg" alt=""></span>
@@ -476,29 +482,29 @@
 
 <svg class="links" width="1600" height="1000" aria-hidden="true">
   <g fill="none" stroke="rgba(86,134,254,.6)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 6">
-    <path d="M412 806 L420 864"/>
-    <path d="M1506 822 L1474 862"/>
+    <path d="M1342 806 L1342 862"/>
+    <path d="M1457 822 L1457 862"/>
     <path d="M356 266 L298 242"/>
     <path d="M356 420 L300 420"/>
     <path d="M1242 654 L1212 654"/>
-    <path d="M1360 826 L1372 862"/>
+    <path d="M1261 826 L1261 862"/>
   </g>
   <g fill="none" stroke="rgba(86,134,254,.9)" stroke-width="1.5">
-    <circle cx="421" cy="866" r="3.2"/>
-    <circle cx="1472" cy="864" r="3.2"/>
+    <circle cx="1342" cy="864" r="3.2"/>
+    <circle cx="1457" cy="864" r="3.2"/>
     <circle cx="296" cy="241" r="3.2"/>
     <circle cx="298" cy="420" r="3.2"/>
     <circle cx="1210" cy="654" r="3.2"/>
-    <circle cx="1373" cy="864" r="3.2"/>
+    <circle cx="1261" cy="864" r="3.2"/>
   </g>
 </svg>
 
-<div class="pin" style="left:392px;top:766px"><img src="../icons/provider.svg" alt=""><span class="n">1</span></div>
-<div class="pin" style="left:1486px;top:802px"><img src="../icons/keys.svg" alt=""><span class="n">2</span></div>
+<div class="pin" style="left:1322px;top:766px"><img src="../icons/provider.svg" alt=""><span class="n">1</span></div>
+<div class="pin" style="left:1437px;top:802px"><img src="../icons/keys.svg" alt=""><span class="n">2</span></div>
 <div class="pin" style="left:336px;top:246px"><img src="../icons/sidebar.svg" alt=""><span class="n">3</span></div>
 <div class="pin" style="left:336px;top:400px"><img src="../icons/sessions.svg" alt=""><span class="n">4</span></div>
 <div class="pin" style="left:1242px;top:634px"><img src="../icons/model.svg" alt=""><span class="n">5</span></div>
-<div class="pin" style="left:1340px;top:786px"><img src="../icons/balance.svg" alt=""><span class="n">6</span></div>
+<div class="pin" style="left:1241px;top:786px"><img src="../icons/balance.svg" alt=""><span class="n">6</span></div>
 
 <div class="legend">
   <span class="lg-label">改动清单</span>
