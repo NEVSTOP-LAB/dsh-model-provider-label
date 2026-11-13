@@ -1,6 +1,6 @@
 {
   "name": "dsh-nevstop-lab-flavor",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "让 DSH 更贴合 NEVSTOP-LAB 使用习惯的本地化定制插件，各项定制按需开启。",
   "keywords": [
     "dsh",
@@ -26,6 +26,7 @@
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
+    "./typert": "./lib/balance/typert.js",
     "./package.json": "./package.json"
   },
   "files": [
