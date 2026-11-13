@@ -1,54 +1,71 @@
 # README 头图
 
-README 顶部的 `assets/hero.png` 是一张带标注的真实界面图：底层是 DSH 的真实截图，上层由 `assets/hero/source.html` 叠加标题、spotlight 与图例。它跟随代码更新。
+README 顶部的 `assets/hero.png` 是一张模拟 DSH 界面的说明图，用来一眼交代插件长什么样、改了哪几处。它由 `assets/hero/source.html` 渲染而来，跟代码一起更新。
 
-## 组成
+## 画布与输出
 
-| 文件 | 作用 | 尺寸 |
+| 项 | 值 |
+|---|---|
+| CSS 画布 | 1600 × 1000 |
+| 设备像素比 | 2 |
+| PNG 实际像素 | 3200 × 2000 |
+| 源文件 | `assets/hero/source.html`：单文件自包含（内联样式、内联 UI 图标，功能图标引用 `assets/icons/`） |
+| 产物 | `assets/hero.png` |
+
+渲染脚本用本机 Chromium 系浏览器的无头模式截图。不要把字体、图片、外部样式挂到网络或磁盘外部资源上，否则截图可能拍在资源加载完成之前。
+
+## 分层
+
+头图自上而下由五层叠成，改图时按层定位：
+
+| 层 | 内容 | 改动信号 |
 |---|---|---|
-| `assets/hero/main.png` | DSH 真实截图：设置页打开到 NEVSTOP-LAB | 1600 × 1000 |
-| `assets/hero/composer.png` | 输入区控制条真实裁剪：模型按钮 / 余额圆环 / 发送按钮 | 460 × 78 |
-| `assets/hero/source.html` | 叠加层：标题、真实截图、输入区细节卡、六处虚线高亮与图标编号、图例 | 1600 × 1215 |
-| `assets/hero.png` | 渲染产物 | 3200 × 2430（2x） |
-| `scripts/hero/capture.mjs` | 从运行中的 DSH Web 采集上面两张真实截图 | — |
-| `scripts/hero/render.mjs`、`scripts/hero/browser.mjs` | 渲染叠加层、探测本机 Chromium 系浏览器 | — |
+| 背景层 | 整幅底色、渐变、网格或光晕 | 换主题色、品牌色 |
+| DSH 窗口层 | 模拟的 DSH 主窗口：标题栏、左侧栏、活跃会话区、输入区与发送按钮 | 侧栏结构、输入区控件、发送按钮外观或文案变化 |
+| 设置弹层 | 叠在窗口上的 NEVSTOP-LAB 设置页：功能卡片、开关、配置项与提示语 | 卡片增删、开关默认值、配置项或提示文案变化 |
+| spotlight 层 | 高亮框、连接线与图标编号，指向窗口或设置页里的具体控件 | 被标注的控件位置或名称变化 |
+| 图例层 | 底部图例，解释标注与功能名 | 新增/删除标注、功能改名 |
+
+标注、图例与 README 功能表是同一套说法：改一处就要顺带核对另外两处。
+
+## 涉及文件
+
+| 文件 | 作用 |
+|---|---|
+| `assets/hero/source.html` | 头图源，唯一手改的文件 |
+| `assets/hero.png` | 渲染产物，由脚本生成，不手改 |
+| `scripts/hero/render.mjs`、`scripts/hero/browser.mjs` | 渲染脚本与浏览器探测，零依赖 Node ESM |
+| `README.md` | 顶部引用 `assets/hero.png` |
+| `assets/icons/` | 图标源文件 |
+| `lib/client.js` | 界面里内联的图标 path 与设置页文案 |
+| `docs/hero.md` | 本文件：分层、判定与同步规则 |
+| `.github/workflows/hero-reminder.yml` | 改了界面或说明却没更新头图时给 PR 一条 warning |
+| `.github/pull_request_template.md` | PR 里的头图自检复选框 |
 
 ## 重新生成
 
-前提：Node 22+（`capture.mjs` 用内置 WebSocket 走 CDP）与本机 Edge / Chrome / Chromium。
+在仓库根目录：
 
 ```bash
 npm run hero
 ```
 
-等价于 `node scripts/hero/render.mjs`，默认参数 `--source assets/hero/source.html --out assets/hero.png --size 1600x1215 --scale 2`。成功输出 `hero written: assets/hero.png (3200x2430, <KB> KB)`；脚本会校验 PNG 像素尺寸，不符时退出码非 0。浏览器探测优先取 `HERO_BROWSER`，否则按平台查找。
+等价于 `node scripts/hero/render.mjs`，默认参数是 `--source assets/hero/source.html --out assets/hero.png --size 1600x1000 --scale 2`。任意参数可覆盖，便于调试或单独出图：
 
-## 干净实例
+```bash
+node scripts/hero/render.mjs --source path/to/source.html --out path/to/out.png --size 800x500 --scale 2
+```
 
-截图必须在不含个人数据的 DSH 实例里重拍，不要用真实的 `~/.dsh`。步骤（`DSH_HOME` 指向临时目录）：
+脚本成功后输出一行：`hero written: assets/hero.png (3200x2000, <KB> KB)`。它会把截图写入输出目录下的临时目录，解析 PNG 的 IHDR 校验实际像素等于 `宽 × scale`、`高 × scale`，不符或没有截图时退出码非 0；临时目录用完即删，输出目录不存在时自动创建。
 
-1. 用临时数据目录启动 Web 实例，记下输出的带 token URL：
+浏览器优先取环境变量 `HERO_BROWSER` 指向的可执行文件，否则自动探测本机的 Edge / Chrome / Chromium。没有可用浏览器时脚本会列出查找过的位置，并提示安装或设置 `HERO_BROWSER`：
 
-   ```powershell
-   $env:DSH_HOME = '<临时目录>'
-   dsh web --no-open --port 0
-   ```
+```powershell
+$env:HERO_BROWSER = '<浏览器可执行文件路径>'
+npm run hero
+```
 
-2. 把本仓库插件装进该实例的 web profile：
-
-   ```powershell
-   dsh plugin --profile web add "file:<本仓库路径>"
-   ```
-
-3. 准备演示数据：设置假 `DEEPSEEK_API_KEY`（模型目录可见、余额查询失败，不涉及真实账户），用 `dsh headless "<演示文案>"` 生成 2–3 条会话。headless 会因假 Key 在调用模型时报错，但会话已落盘；不要手改会话 JSONL，事件序列不完整会让 host 判定会话无效。
-4. 重启 Web 实例后运行采集脚本，把两张图写回 `assets/hero/`：
-
-   ```bash
-   node scripts/hero/capture.mjs --url 'http://127.0.0.1:<port>/?token=<token>'
-   ```
-
-   脚本会打开设置 → NEVSTOP-LAB、滚动到「新会话默认模型」卡片后截主图，再打开一条活跃会话把输入区落到底部截控制条；输出 `captured main.png (1600x1000)` 与 `captured composer.png (460x78)`。
-5. `npm run hero` 重新渲染，目视检查 `assets/hero.png`。
+生成后目视检查 `assets/hero.png`：没有空白或错位、没有残留调试文字、标注指向的控件确实在图上、与设置页当前文案一致。
 
 ## 更新判定
 
@@ -57,25 +74,40 @@ npm run hero
 | 新增、删除功能，或功能改名 | 必须更新 |
 | 任何功能的默认开关值变化 | 必须更新 |
 | 设置页卡片、开关、配置项或提示文案变化 | 必须更新 |
-| 侧栏、输入区、发送按钮等界面外观或文案变化 | 必须重拍截图并更新 |
+| 侧栏、输入区、发送按钮等界面外观或文案变化 | 必须更新 |
 | 图标变化 | 必须更新，且三处同步 |
 | README 功能表或一句话说明变化 | 必须更新，且图例与标注同步 |
 | 纯内部修复：选择器、时序、错误处理，界面不变 | 不必更新 |
 | 依赖升级、版本号、CI 配置、构建调整 | 不必更新 |
+| 不影响界面文案与布局的重构 | 不必更新 |
 | 文档错别字、注释修正 | 不必更新 |
 
-不确定时按「必须」处理：头图过时比多拍一次代价大得多。
+不确定时按「必须」处理：头图过时比多渲染一次代价大得多。
 
 ## 新增一个功能时要改哪几处
 
-1. `lib/index.js`：`DEFAULTS` 与 `normalizeConfig`；
-2. `lib/client.js`：设置页卡片、开关、中英文案与界面逻辑；
+1. `lib/index.js`：`DEFAULTS` 里加功能默认值，`normalizeConfig` 里加校验回落；
+2. `lib/client.js`：`DEFAULTS.features`、设置页卡片与开关、`DICT` 的中英文案、需要的界面逻辑；
 3. `assets/icons/`：新增图标并接入 `FEATURE_ICONS`；
-4. `README.md`：功能一览表与对应小节；
-5. `assets/hero/source.html`：图例、spotlight 与细节卡按需调整；
-6. 重拍截图并 `npm run hero`；
-7. PR 里勾选头图评估项。
+4. `README.md`：功能一览表加一行，并补该功能的小节；
+5. `assets/hero/source.html`：DSH 窗口层、设置弹层卡片、spotlight 标注与图例；
+6. 运行 `npm run hero`，目视检查 `assets/hero.png`；
+7. PR 里勾选「已评估 README 头图（`assets/hero.png`）是否需要更新」。
+
+只加代码不改头图的 PR，需要能说清为什么界面没变。
 
 ## 图标同步
 
-同一枚图标出现在三处，改一处必须同步另外两处：`assets/icons/`（源文件）、`assets/hero/source.html`（`<img>` 引用）、`lib/client.js`（内联 path）。`scripts/icons/verify.mjs` 随 `npm run check` 校验；颜色固定 `#5686FE`，保证 README 亮/暗主题都可见。
+同一枚图标出现在三处，改一处必须同步另外两处：
+
+| 位置 | 形态 |
+|---|---|
+| `assets/icons/` | 源文件（SVG），命名与用途对应 |
+| `assets/hero/source.html` | 用 `<img>` 引用同一批 SVG |
+| `lib/client.js` | 内联同一份 path 数据 |
+
+同步要点：
+
+- 几何与 `viewBox` 保持一致，头图里的显示尺寸按 CSS 尺寸写，导出时由 2x 放大；
+- 颜色固定 `#5686FE`，保证 README 在 GitHub 亮/暗主题都可见；
+- 改完运行 `npm run check`，`scripts/icons/verify.mjs` 会校验三处一致。

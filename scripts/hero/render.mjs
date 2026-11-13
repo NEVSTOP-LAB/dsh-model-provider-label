@@ -21,7 +21,7 @@ import { BrowserMissingError, resolveBrowser } from './browser.mjs'
 const DEFAULTS = {
   source: 'assets/hero/source.html',
   out: 'assets/hero.png',
-  size: '1600x1215',
+  size: '1600x1000',
   scale: '2',
 }
 
@@ -218,3 +218,4 @@ try {
     process.exitCode = 1
   }
 }
+

@@ -38,7 +38,7 @@ jobs:
             exit 0
           fi
 
-          watched="$(printf '%s\n' "${changed}" | grep -E '^(lib/|README\.md$|assets/hero/source\.html$|assets/hero/main\.png$|assets/hero/composer\.png$)' || true)"
+          watched="$(printf '%s\n' "${changed}" | grep -E '^(lib/|README\.md$|assets/hero/source\.html$)' || true)"
           if [[ -z "${watched}" ]]; then
             echo "未改动界面或说明相关文件，头图无需更新。"
             exit 0

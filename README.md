@@ -117,7 +117,7 @@ DSH `>=0.2.1-rc.0 <0.3.0-0`。
 
 ## 维护
 
-- `assets/hero.png` 是 README 顶图的渲染产物，由 `assets/hero/source.html` 叠加层引用两张真实截图（`assets/hero/main.png`、`assets/hero/composer.png`）生成：改完界面或功能文案后运行 `npm run hero`，截图需在无个人数据的干净环境重拍，步骤见 `docs/hero.md`。
+- `assets/hero.png` 是 README 顶图的渲染产物，源文件为 `assets/hero/source.html`：改完界面或功能文案后运行 `npm run hero` 重新生成，判定标准见 `docs/hero.md`。
 - `assets/icons/` 是功能图标的唯一源文件，README、头图与插件设置页共用；改动时三处同步。
 - PR 模板里有对应的评估项，CI 会在界面改动而头图未更新时给出提醒。
 
