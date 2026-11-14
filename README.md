@@ -1,6 +1,6 @@
 # dsh-nevstop-lab-flavor
 
-![dsh-nevstop-lab-flavor 头图：DSH 界面中央打开 NEVSTOP-LAB 设置页，六项改动以带图标的 spotlight 标出](assets/hero.png)
+![dsh-nevstop-lab-flavor 头图：DSH 界面中央打开 NEVSTOP-LAB 设置页，七项改动以带图标的 spotlight 标出](assets/hero.png)
 
 让 DSH 更贴合 NEVSTOP-LAB 使用习惯的本地化定制插件。功能逐项开关，关掉即恢复 DSH 原生行为。
 
@@ -14,6 +14,7 @@
 | <img src="assets/icons/sessions.svg" width="20" height="20" alt=""> | [活跃会话区](docs/features/active-sessions.md) | 开 | 在「工作区」上方列出最近活跃的会话，随时切回正在处理的工作。 |
 | <img src="assets/icons/model.svg" width="20" height="20" alt=""> | [新会话默认模型](docs/features/default-model.md) | 开 | 新会话固定使用指定模型，避免沿用上个会话的选择多花冤枉钱。 |
 | <img src="assets/icons/balance.svg" width="20" height="20" alt=""> | [余额圆环](docs/features/balance-ring.md) | 开 | 在输入框右侧显示余额或用量，随时知道还能用多少。 |
+| <img src="assets/icons/machine.svg" width="20" height="20" alt=""> | [本机标识](docs/features/machine-badge.md) | 开 | 侧栏底部长显本机名称、标签页标题带同一前缀，远程时一眼分辨是哪台机器。 |
 
 设置入口：**设置 → NEVSTOP-LAB**。发送按钮的外观与快捷键提示跟随「编写器键位」开关，不单独占开关。
 
