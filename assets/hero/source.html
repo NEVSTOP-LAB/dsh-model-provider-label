@@ -108,7 +108,13 @@
   .ws .ui { width: 13px; height: 13px; color: #7d838c; }
   .ws .count { font-size: 10px; color: #8b9099; background: rgba(255, 255, 255, .06); border-radius: 999px; padding: 1px 7px; }
   .ws .actions { margin-left: auto; display: flex; gap: 7px; color: #7d838c; }
-  .side-foot { margin-top: auto; display: flex; align-items: center; gap: 9px; padding: 9px 8px 4px; border-top: 1px solid rgba(255, 255, 255, .06); }
+  .side-foot { display: flex; align-items: center; gap: 9px; padding: 9px 8px 4px; border-top: 1px solid rgba(255, 255, 255, .06); }
+  .side-machine {
+    margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 9px 8px 8px;
+    border-top: 1px solid rgba(255, 255, 255, .06); color: #a6abb3;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; letter-spacing: .02em;
+  }
+  .side-machine img { width: 16px; height: 16px; flex: none; }
   .avatar {
     width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
     background: linear-gradient(135deg, #5686fe, #8b5cf6); font-size: 11px; font-weight: 700; color: #fff; flex: none;
@@ -161,7 +167,7 @@
 
   /* ---------- settings dialog ---------- */
   .settings {
-    position: absolute; left: 450px; top: 248px; width: 780px; height: 556px; z-index: 30;
+    position: absolute; left: 450px; top: 236px; width: 780px; height: 590px; z-index: 30;
     background: #1c1c20; border: 1px solid rgba(255, 255, 255, .13); border-radius: 16px; overflow: hidden;
     box-shadow: 0 44px 100px rgba(0, 0, 0, .62), inset 0 0 0 1px rgba(255, 255, 255, .03);
   }
@@ -187,9 +193,9 @@
   .section-title { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; color: #f0f2f5; letter-spacing: .03em; }
   .section-title img { width: 24px; height: 24px; }
   .section-intro { margin-top: 5px; font-size: 12px; line-height: 18px; color: #9aa0a8; }
-  .cards { display: flex; flex-direction: column; gap: 7px; padding: 11px 0 10px; flex: 1; }
+  .cards { display: flex; flex-direction: column; gap: 6px; padding: 11px 0 10px; flex: 1; }
   .card {
-    height: 56px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 12px;
+    height: 52px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 12px;
     background: #232326; border: 1px solid rgba(255, 255, 255, .07); border-radius: 10px;
   }
   .card-ico { width: 32px; height: 32px; flex: none; border-radius: 8px; background: rgba(86, 134, 254, .12); display: flex; align-items: center; justify-content: center; }
@@ -284,10 +290,10 @@
   </div>
   <div class="headline">
     <h1>给 DSH 加上 NEVSTOP-LAB 的手感</h1>
-    <p>6 项定制，每项一个开关；图上用图标和编号标出改动位置。入口：<span class="accent">设置 → NEVSTOP-LAB</span></p>
+    <p>7 项定制，每项一个开关；图上用图标和编号标出改动位置。入口：<span class="accent">设置 → NEVSTOP-LAB</span></p>
   </div>
   <div class="head-pills">
-    <span class="pill hot">6 项独立开关</span>
+    <span class="pill hot">7 项独立开关</span>
     <span class="pill">DSH ≥ 0.2.1</span>
     <span class="pill">MIT</span>
   </div>
@@ -356,6 +362,11 @@
           <svg class="ui"><use href="#i-search"/></svg>
           <svg class="ui"><use href="#i-plus"/></svg>
         </span>
+      </div>
+
+      <div class="side-machine">
+        <img src="../icons/machine.svg" alt="">
+        <span>DESKTOP-9K2F</span>
       </div>
 
       <div class="side-foot">
@@ -456,7 +467,7 @@
           </span>
           <span class="card-actions"><span class="gear"><svg class="ui"><use href="#i-gear"/></svg></span><span class="toggle"></span></span>
         </div>
-        <div class="card hl">
+        <div class="card">
           <span class="card-ico"><img src="../icons/model.svg" alt=""></span>
           <span class="card-text">
             <span class="card-title">新会话默认模型</span>
@@ -471,6 +482,14 @@
             <span class="card-desc">¥ 128.40 · 今日已用 12% · 每 60 秒自动刷新</span>
           </span>
           <span class="toggle"></span>
+        </div>
+        <div class="card hl">
+          <span class="card-ico"><img src="../icons/machine.svg" alt=""></span>
+          <span class="card-text">
+            <span class="card-title">本机标识</span>
+            <span class="card-desc">左侧栏底部显示 DESKTOP-9K2F · 浏览器标签页标题带同一前缀</span>
+          </span>
+          <span class="card-actions"><span class="gear"><svg class="ui"><use href="#i-gear"/></svg></span><span class="toggle"></span></span>
         </div>
       </div>
 
@@ -490,6 +509,7 @@
     <path d="M356 420 L300 420"/>
     <path d="M1242 654 L1212 654"/>
     <path d="M1261 826 L1261 862"/>
+    <path d="M356 790 L302 856"/>
   </g>
   <g fill="none" stroke="rgba(86,134,254,.9)" stroke-width="1.5">
     <circle cx="1342" cy="864" r="3.2"/>
@@ -498,6 +518,7 @@
     <circle cx="298" cy="420" r="3.2"/>
     <circle cx="1210" cy="654" r="3.2"/>
     <circle cx="1261" cy="864" r="3.2"/>
+    <circle cx="300" cy="866" r="3.2"/>
   </g>
 </svg>
 
@@ -507,6 +528,7 @@
 <div class="pin" style="left:336px;top:400px"><img src="../icons/sessions.svg" alt=""><span class="n">4</span></div>
 <div class="pin" style="left:1242px;top:634px"><img src="../icons/model.svg" alt=""><span class="n">5</span></div>
 <div class="pin" style="left:1241px;top:786px"><img src="../icons/balance.svg" alt=""><span class="n">6</span></div>
+<div class="pin" style="left:336px;top:770px"><img src="../icons/machine.svg" alt=""><span class="n">7</span></div>
 
 <div class="legend">
   <span class="lg-label">改动清单</span>
@@ -516,6 +538,7 @@
   <span class="lg-item"><span class="lg-num">4</span><img class="lg-ico" src="../icons/sessions.svg" alt=""><span class="lg-text">活跃会话区</span></span>
   <span class="lg-item"><span class="lg-num">5</span><img class="lg-ico" src="../icons/model.svg" alt=""><span class="lg-text">新会话默认模型</span></span>
   <span class="lg-item"><span class="lg-num">6</span><img class="lg-ico" src="../icons/balance.svg" alt=""><span class="lg-text">余额圆环</span></span>
+  <span class="lg-item"><span class="lg-num">7</span><img class="lg-ico" src="../icons/machine.svg" alt=""><span class="lg-text">本机标识</span></span>
 </div>
 
 <div class="mock-note">界面为示意图 · 实际效果以插件为准</div>

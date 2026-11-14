@@ -1,0 +1,7 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#5686FE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <title>本机标识</title>
+  <rect x="2.9" y="4.2" width="18.2" height="12.2" rx="2.6"/>
+  <path d="M8.4 20.2h7.2"/>
+  <path d="M12 16.4v3.8"/>
+  <circle cx="17.4" cy="8.2" r="1" fill="#5686FE" stroke="none"/>
+</svg>
