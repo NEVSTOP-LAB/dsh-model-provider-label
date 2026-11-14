@@ -109,9 +109,13 @@
   .ws .count { font-size: 10px; color: #8b9099; background: rgba(255, 255, 255, .06); border-radius: 999px; padding: 1px 7px; }
   .ws .actions { margin-left: auto; display: flex; gap: 7px; color: #7d838c; }
   .side-foot { display: flex; align-items: center; gap: 9px; padding: 9px 8px 4px; border-top: 1px solid rgba(255, 255, 255, .06); }
+  .side-tool {
+    margin-top: auto; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 8px;
+    color: #c9cdd3; font-size: 13.5px;
+  }
+  .side-tool .ui { width: 16px; height: 16px; color: #8b9099; }
   .side-machine {
-    margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 9px 8px 8px;
-    border-top: 1px solid rgba(255, 255, 255, .06); color: #a6abb3;
+    display: flex; align-items: center; gap: 8px; padding: 2px 8px 8px; color: #a6abb3;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; letter-spacing: .02em;
   }
   .side-machine img { width: 16px; height: 16px; flex: none; }
@@ -364,6 +368,11 @@
         </span>
       </div>
 
+      <div class="side-tool">
+        <svg class="ui"><use href="#i-puzzle"/></svg>
+        <span>工具箱</span>
+      </div>
+
       <div class="side-machine">
         <img src="../icons/machine.svg" alt="">
         <span>DESKTOP-9K2F</span>
@@ -509,7 +518,7 @@
     <path d="M356 420 L300 420"/>
     <path d="M1242 654 L1212 654"/>
     <path d="M1261 826 L1261 862"/>
-    <path d="M356 790 L302 856"/>
+    <path d="M356 790 L302 866"/>
   </g>
   <g fill="none" stroke="rgba(86,134,254,.9)" stroke-width="1.5">
     <circle cx="1342" cy="864" r="3.2"/>
